@@ -6,14 +6,19 @@
 $fn=64;
 handle=false;
 usb=true;
+adapter_slots=false;
+separating_wall=false;
 module dip(distance,pins) //distance=1 7.75mm distance=2 15.5mm, length 2.54mm/pin
-    {difference()
-        {cube([4+distance*7.75,4+pins*2.54,7.3],center=false);
-          translate([4,0,0.1])cube([distance*7.75-4,4+pins*2.54,7.3],center=false);
-          translate([1.6,0,0.1])cube([0.8,4+pins*2.54,7.3],center=false);
-          translate([1.6+distance*7.75,0,0.1])cube([0.8,4+pins*2.54,7.3],center=false);  
-        };
-     };
+    {
+        if (adapter_slots) {
+            difference()
+            {cube([4+distance*7.75,4+pins*2.54,7.3],center=false);
+            translate([4,0,0.1])cube([distance*7.75-4,4+pins*2.54,7.3],center=false);
+            translate([1.6,0,0.1])cube([0.8,4+pins*2.54,7.3],center=false);
+            translate([1.6+distance*7.75,0,0.1])cube([0.8,4+pins*2.54,7.3],center=false);  
+            };
+        }
+    };
 
 module box_lower()
     {
@@ -29,11 +34,15 @@ module box_lower()
         translate([1.2,1.2,1.2])cube([65.9-2.4,105.5-2.4,28],center=false);
         if (usb==true) {translate([1.2+45,-10,1.2+13.5])cube([14,14,14],center=false);}
     };
-    translate( [65.9-1.2,0,0]) difference()
+    if (separating_wall)
     {
-        cube([147-65.9+1.2,82.4,28],center=false);
-        translate([1.2,1.2,1.2])cube([147-65.9-1.2,80,28],center=false);
-    };
+        translate( [65.9-1.2,0,0]) difference()
+        {
+            cube([147-65.9+1.2,82.4,28],center=false);
+            translate([1.2,1.2,1.2])cube([147-65.9-1.2,80,28],center=false);
+        }
+    }
+        
     
     //translate ([65.9-1.2,82.4-1.2,0]) color("Blue") difference()
     //{
