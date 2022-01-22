@@ -8,6 +8,7 @@ handle=false;
 usb=true;
 adapter_slots=false;
 separating_wall=false;
+zif_lever_notch=true;
 module dip(distance,pins) //distance=1 7.75mm distance=2 15.5mm, length 2.54mm/pin
     {
         if (adapter_slots) {
@@ -32,6 +33,10 @@ module box_lower()
     {
         cube([65.9,105.5,28],center=false);
         translate([1.2,1.2,1.2])cube([65.9-2.4,105.5-2.4,28],center=false);
+        if (zif_lever_notch)
+        {
+                translate([15 + 1.2, 105.5-2.4, 24])cube([5, 10, 10], center=false);
+        }
         if (usb==true) {translate([1.2+45,-10,1.2+13.5])cube([14,14,14],center=false);}
     };
     if (separating_wall)
