@@ -19,9 +19,9 @@ module box_lower()
     {
     difference()
     {
-        minkowski(){cube([150,160,28],center=false);cylinder(d=3,h=4);};
-        translate([0,0,28]) minkowski(){cube([150,160,28],center=false);cylinder(d=1,h=2);};
-        translate([1.2,1.2,1.2])cube([150-2.4,160-2.4,28],center=false);
+        minkowski(){cube([147,147,28],center=false);cylinder(d=3,h=4);};
+        translate([0,0,28]) minkowski(){cube([147,147,28],center=false);cylinder(d=1,h=2);};
+        translate([1.2,1.2,1.2])cube([147-2.4,147-2.4,28],center=false);
     };
     difference()
     {
@@ -31,8 +31,8 @@ module box_lower()
     };
     translate( [65.9-1.2,0,0]) difference()
     {
-        cube([150-65.9+1.2,82.4,28],center=false);
-        translate([1.2,1.2,1.2])cube([150-65.9-1.2,80,28],center=false);
+        cube([147-65.9+1.2,82.4,28],center=false);
+        translate([1.2,1.2,1.2])cube([147-65.9-1.2,80,28],center=false);
     };
     
     //translate ([65.9-1.2,82.4-1.2,0]) color("Blue") difference()
@@ -70,12 +70,12 @@ module top()
     difference()
         {
         union()
-        {minkowski(){cube([150,160,6],center=false);cylinder(d=0.6,h=3.2);};
-        minkowski(){cube([150,160,4.6],center=false);cylinder(d=3,h=1.2);};
+        {minkowski(){cube([147,147,6],center=false);cylinder(d=0.6,h=3.2);};
+        minkowski(){cube([147,147,4.6],center=false);cylinder(d=3,h=1.2);};
         
         }
     
-    translate([1.2,1.2,1.2])cube([150-2.4,160-2.4,29],center=false);
+    translate([1.2,1.2,1.2])cube([147-2.4,147-2.4,29],center=false);
     translate([15,80,0]) mirror([0,1,0])linear_extrude(0.6) text("TL866 II Plus", size=15, font = "Liberation Sans:style=Bold Italic");
     //translate([25,80,0]) mirror([0,1,0])linear_extrude(0.6) text("Universal Programmer", size=10, font = "Liberation Sans:style=Bold Italic");
     
